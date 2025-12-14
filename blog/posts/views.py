@@ -4,16 +4,20 @@ from django.urls import reverse
 
 # Create your views here.
 
-post = [
+posts = [
     {
-        "id":2,
-        "title": 'testing for dev first try '
-        "content" 'hello there ...'
+        "id": 1,
+        "title": 'testing dynamic urls on django',
+        "content": 'its working  .'
     },
     {
-        "id":3,
-        "title": 'testing dynamic urls on django'
-        "content" 'its working  ...'
+        "id": 2,
+        "title": 'LIFE if ????',
+        "content": 'its working  ...'
+    },
+    {   "id": 3,
+        "title": 'world first car.....',
+        "content": 'its working..'
     }
 ]
 
@@ -27,13 +31,13 @@ def home(request):
                 <p>{post['content']}</p> 
            </div>
     '''
-    return HttpResponse(html)
+    return render(request, 'posts/home.html', {'posts':'posts'})
 
 
-def post(request,id):
+def post(request, id):
     valid_id = False
     for post in posts:
-        if post['id'] == id:
+        if post['id'] == id: 
             post_dict = post
             valid_id = True
             break
@@ -47,5 +51,6 @@ def post(request,id):
         return HttpResponseNotFound("<h1>post not found</h1>")
     
 
-def google(request,id):
-    return HttpResponseRedirect(f'/post/{id}/')
+def google(request, name):
+    url = reverse("post", args=[id])
+    return HttpResponseRedirect(url)
