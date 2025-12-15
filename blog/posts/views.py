@@ -12,7 +12,7 @@ posts = [
     },
     {
         "id": 2,
-        "title": 'LIFE if ????',
+        "title": 'Let\'s LIFE if ????',
         "content": 'its working  ...'
     },
     {   "id": 3,
@@ -29,10 +29,9 @@ def home(request):
             <a herf="/post/{post['id']}/">
                 <h1>{post['id']} - {post['title']}</h1></a> 
                 <p>{post['content']}</p> 
-           </div>
-    '''
+           </div>'''
     name = "John "    
-    return render(request, 'posts/home.html', {'posts':'posts'})
+    return render(request, 'posts/home.html', {'posts':'posts', 'username':'john'})
 
 
 def post(request, id):
@@ -43,11 +42,7 @@ def post(request, id):
             valid_id = True
             break
     if valid_id:    
-        html = f'''
-            <h1>{post_dict['title']}</h1>
-            <p>{post_dict['content']}</p>
-        '''     
-        return HttpResponse(html)
+        return render(request, 'posts.post.html')
     else:
         return HttpResponseNotFound("<h1>post not found</h1>")
     

@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Home Page</title>
 </head>
-    {% if posts %}
-
-        <h1>ALL posts AVAILABLE</H1>
+    
+    <h1>{{username|capfirst}}</h1>
         {% for post in posts %}
-            <a href=""><h1>{{post.titlr}}</h1></a>
-            <p1>{{post.content}}<>
+            <a href=""><h1> {{forloop.counter0}} - {{post.titlr|title}}</h1></a>
+            <p1>{{post.content|truncatewords:5}}<>
+        {% empty %}
+            <h1>No Post AVAILABLE</h1>     
         {% endfor%}
-
-    {% else %}
-                <h1>No Post AVAILABLE</hw>
-    {% endif%}    
+    
 <body>
      
 </body>
-</html>
+</html> 
