@@ -26,15 +26,15 @@ def home(request):
     for post in posts: 
         html += f'''
             <div> 
-            <a herf="/post/{post['id']}/">
+            <a href="/post/{post['id']}/">
                 <h1>{post['id']} - {post['title']}</h1></a> 
                 <p>{post['content']}</p> 
            </div>'''
     name = "John "    
-    return render(request, 'posts/home.html', {'posts':'posts', 'username':'john'})
+    return render(request, 'posts/home.html', {'posts':'posts'}, {'username':'john'})
 
 
-def post(request, id):
+def post(request, id, **args,):
     valid_id = False
     for post in posts:
         if post['id'] == id: 
@@ -42,7 +42,7 @@ def post(request, id):
             valid_id = True
             break
     if valid_id:    
-        return render(request, 'posts.post.html')
+        return render(request, 'posts/post.html', {'post_dict':'posts'})
     else:
         return HttpResponseNotFound("<h1>post not found</h1>")
     
@@ -50,3 +50,5 @@ def post(request, id):
 def google(request, name):
     url = reverse("post", args=[id])
     return HttpResponseRedirect(url)
+
+

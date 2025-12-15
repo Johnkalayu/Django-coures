@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/',include('posts.urls')),
    # path('google/', views.google)
-   # path("<int:id>/",views.google)
+   
 ]   
 
 
