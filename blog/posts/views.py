@@ -8,7 +8,7 @@ posts = [
     {
         "id": 1,
         "title": 'testing dynamic urls on django',
-        "content": 'its working  .'
+        "content": 'its working......'
     },
     {
         "id": 2,
@@ -27,10 +27,11 @@ def home(request):
         html += f'''
             <div> 
             <a herf="/post/{post['id']}/">
-                <h1>{post['id']} - {post['title']}</h1><a/> 
+                <h1>{post['id']} - {post['title']}</h1></a> 
                 <p>{post['content']}</p> 
            </div>
     '''
+    name = "John "    
     return render(request, 'posts/home.html', {'posts':'posts'})
 
 
