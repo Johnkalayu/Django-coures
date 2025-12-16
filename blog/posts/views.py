@@ -6,16 +6,16 @@ from django.urls import reverse
 
 posts = [
     {
-        "id": 1,
+        "id": 0,
         "title": 'testing dynamic urls on django',
         "content": 'its working......'
     },
     {
-        "id": 2,
+        "id": 1,
         "title": 'Let\'s LIFE if ????',
         "content": 'its working  ...'
     },
-    {   "id": 3,
+    {   "id": 2,
         "title": 'world first car.....',
         "content": 'its working..'
     }
@@ -31,10 +31,10 @@ def home(request):
                 <p>{post['content']}</p> 
            </div>'''
     name = "John "    
-    return render(request, 'posts/home.html', {'posts':'posts'}, {'username':'john'})
+    return render(request, 'posts/home.html', {'posts': posts, 'username':'john'})
 
 
-def post(request, id, **args,):
+def post(request, id,):
     valid_id = False
     for post in posts:
         if post['id'] == id: 
@@ -42,7 +42,7 @@ def post(request, id, **args,):
             valid_id = True
             break
     if valid_id:    
-        return render(request, 'posts/post.html', {'post_dict':'posts'})
+        return render(request, 'posts/post.html', {'post_dict':posts})
     else:
         return HttpResponseNotFound("<h1>post not found</h1>")
     
