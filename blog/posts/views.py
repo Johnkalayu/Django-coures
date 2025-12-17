@@ -55,6 +55,9 @@ def google(request, name):
 
 
 def shape(request):
-    #context = {'shape': Shape_json}
+    shapes_list = [{"type": x.type, "color": x.color} for x in Shape.objects.all()]
+    shapes_json = json.dumps(shapes_list)
+    
+    context = {'shapes': shapes_json}
 
-    return render(request, 'posts/shape.html')
+    return render(request, 'posts/shape.html', context)

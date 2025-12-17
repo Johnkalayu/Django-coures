@@ -2,16 +2,25 @@
 
 {% load  static  %}
 {% block scripts%}
-<scripts src="https://github.com/mrdoob/three.js/src/animation/AnimationAction.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+  }
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+{{ shapes|json_script:"shapes-data" }}
 <script>
     const shapes = JSON.parse('{{shapes | safe}}')
     const.log(shapes)
 </script>  
-    
-<script src="{% static "posts/three.js" %}"></script>
-
+<script src="{% static "posts/three.js" %}" defer></script>
 {% endblock scripts %}
 
-{% block body %}
-    <h1>Hello to THree,js</h1>
-{% endblock body %}
+{% block content %} 
+    <div id="scene-box"></div>
+{% endblock content %}
