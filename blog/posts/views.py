@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from .models import Shape
+import json
 
 # Create your views here.
 
@@ -52,3 +54,7 @@ def google(request, name):
     return HttpResponseRedirect(url)
 
 
+def shape(request):
+    #context = {'shape': Shape_json}
+
+    return render(request, 'posts/shape.html')

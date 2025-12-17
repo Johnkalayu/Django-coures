@@ -1,0 +1,17 @@
+{%  extends "base.html" %}
+
+{% load  static  %}
+{% block scripts%}
+<scripts src="https://github.com/mrdoob/three.js/src/animation/AnimationAction.js"></script>
+<script>
+    const shapes = JSON.parse('{{shapes | safe}}')
+    const.log(shapes)
+</script>  
+    
+<script src="{% static "posts/three.js" %}"></script>
+
+{% endblock scripts %}
+
+{% block body %}
+    <h1>Hello to THree,js</h1>
+{% endblock body %}
