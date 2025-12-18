@@ -64,5 +64,3 @@ def shape(request):
 
 
 
-def project(request):
-    return render(request, 'posts/project.html')
