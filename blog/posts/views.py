@@ -61,3 +61,8 @@ def shape(request):
     context = {'shapes': shapes_json}
 
     return render(request, 'posts/shape.html', context)
+
+
+
+def project(request):
+    return render(request, 'posts/project.html')
