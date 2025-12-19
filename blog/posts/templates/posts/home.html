@@ -10,6 +10,7 @@
 {% endblock css %}
 
 {% block body %}
+    <img src="{{ post.bunner.url }}"/>
     <h1>{{username|capfirst}}</h1>
         {% for post in posts %}
             <a href="{% url 'post' post.id %}"><h1> {{forloop.counter0}} - {{post.title|title}}</h1></a>

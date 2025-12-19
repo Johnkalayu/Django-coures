@@ -16,3 +16,11 @@ class Shape(models.Model):
         return str(self.id)
     
 
+class Project(models.Model):
+    banner = models.ImageField(default='fallback.png', blank=True )
+    title = models.CharField(max_length=75)
+
+    def __str__(self):
+        return str(self.title)
+
+
